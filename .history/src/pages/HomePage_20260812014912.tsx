@@ -7,7 +7,7 @@ export function HomePage() {
         <p className="eyebrow">Welcome to EventHub</p>
         <h1 id="home-title">
           Every great event
-          begins with a place <br />
+          begins with a place
           to <span>gather.</span>
         </h1>
         <p className="hero__description">

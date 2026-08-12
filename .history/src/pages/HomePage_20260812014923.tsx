@@ -8,7 +8,7 @@ export function HomePage() {
         <h1 id="home-title">
           Every great event
           begins with a place <br />
-          to <span>gather.</span>
+          to<span>gather.</span>
         </h1>
         <p className="hero__description">
           EventHub is building a simpler way to discover, share, and experience the events that matter.

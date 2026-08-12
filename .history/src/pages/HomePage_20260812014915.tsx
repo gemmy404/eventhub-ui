@@ -6,7 +6,7 @@ export function HomePage() {
       <div className="hero__content">
         <p className="eyebrow">Welcome to EventHub</p>
         <h1 id="home-title">
-          Every great event
+          Every great event <br />
           begins with a place <br />
           to <span>gather.</span>
         </h1>
