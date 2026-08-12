@@ -1,4 +1,4 @@
-import eventHubLogo from '../../assets/eventhub-logo.png'
+import eventHubLogo from '../../assets/eventhub-logo.svg'
 
 export function Footer() {
   return (

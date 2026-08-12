@@ -1,4 +1,5 @@
 import eventImage from '../assets/eventhub-landing-event.png'
+import { Link } from 'react-router-dom'
 
 export function HomePage() {
   return (
@@ -15,12 +16,10 @@ export function HomePage() {
         </p>
 
         <div className="hero__actions" aria-label="Landing page actions">
-          <button className="button button--primary" type="button">
+          <Link className="button button--primary" to="/events">
             Explore Events <span aria-hidden="true">→</span>
-          </button>
-          <button className="button button--secondary" type="button">
-            Learn More
-          </button>
+          </Link>
+          <Link className="button button--secondary" to="/about">Learn More</Link>
         </div>
 
         <ul className="hero-features" aria-label="How EventHub works">

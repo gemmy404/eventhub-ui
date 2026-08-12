@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
-import eventHubLogo from '../../assets/eventhub-logo.png'
+import eventHubLogo from '../../assets/eventhub-logo.svg'
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -18,15 +18,15 @@ export function Navbar() {
           className={`primary-navigation${isMenuOpen ? ' is-open' : ''}`}
           aria-label="Primary navigation"
         >
-          <a className="primary-navigation__link is-active" href="#hero" onClick={() => setIsMenuOpen(false)}>
+          <NavLink className={({ isActive }) => `primary-navigation__link${isActive ? ' is-active' : ''}`} to="/" end onClick={() => setIsMenuOpen(false)}>
             Home
-          </a>
-          <a className="primary-navigation__link" href="#hero" onClick={() => setIsMenuOpen(false)}>
+          </NavLink>
+          <NavLink className={({ isActive }) => `primary-navigation__link${isActive ? ' is-active' : ''}`} to="/events" onClick={() => setIsMenuOpen(false)}>
             Browse Events
-          </a>
-          <a className="primary-navigation__link" href="#hero" onClick={() => setIsMenuOpen(false)}>
+          </NavLink>
+          <NavLink className={({ isActive }) => `primary-navigation__link${isActive ? ' is-active' : ''}`} to="/about" onClick={() => setIsMenuOpen(false)}>
             About
-          </a>
+          </NavLink>
         </nav>
 
         <button
