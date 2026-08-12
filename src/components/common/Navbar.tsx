@@ -1,10 +1,19 @@
 import { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 
-import eventHubLogo from '../../assets/eventhub-logo.svg'
+import eventHubLogo from '../../assets/eventhub-logo.png'
+import { useAuth } from '../../contexts/AuthContext'
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { isAuthenticated, logout, user } = useAuth()
+  const navigate = useNavigate()
+
+  function handleLogout() {
+    logout()
+    setIsMenuOpen(false)
+    navigate('/')
+  }
 
   return (
     <header className="site-header">
@@ -28,6 +37,14 @@ export function Navbar() {
             About
           </NavLink>
         </nav>
+
+        <div className="auth-navigation">
+          {isAuthenticated && user ? (
+            <><span className="auth-navigation__user">{user.name}</span><button type="button" className="auth-navigation__action" onClick={handleLogout}>Logout</button></>
+          ) : (
+            <><NavLink className="auth-navigation__link" to="/login">Login</NavLink><NavLink className="auth-navigation__link auth-navigation__link--register" to="/register">Register</NavLink></>
+          )}
+        </div>
 
         <button
           className="menu-toggle"
