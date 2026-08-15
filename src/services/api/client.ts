@@ -20,6 +20,10 @@ apiClient.interceptors.request.use((config) => {
 apiClient.interceptors.response.use(
   (response) => response,
   (error: AxiosError<AppResponseDto<unknown>>) => {
+    if (error.response?.status === 401) {
+      window.dispatchEvent(new Event('auth:unauthorized'))
+    }
+    
     const apiError: ApiError = {
       message: error.response?.data.message ?? error.message ?? 'An unexpected error occurred.',
       status: error.response?.status,
