@@ -8,6 +8,10 @@ import { HomePage } from '../pages/HomePage'
 import { NotFoundPage } from '../pages/NotFoundPage'
 import { LoginPage } from '../pages/auth/LoginPage'
 import { RegisterPage } from '../pages/auth/RegisterPage'
+import { ProtectedRoute } from './ProtectedRoute'
+import { MyTicketsPage } from '../pages/tickets/MyTicketsPage'
+import { TicketDetailsPage } from '../pages/tickets/TicketDetailsPage'
+
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +28,19 @@ export const router = createBrowserRouter([
       {
         path: 'events/:eventId',
         element: <EventDetailsPage />,
+      },
+      {
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: 'my-tickets',
+            element: <MyTicketsPage />,
+          },
+          { 
+            path: 'my-tickets/:ticketId',
+            element: <TicketDetailsPage />,
+          }
+        ]
       },
       {
         path: 'about',
