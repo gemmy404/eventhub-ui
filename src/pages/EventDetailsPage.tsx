@@ -3,7 +3,8 @@ import { Link, useParams } from 'react-router-dom'
 
 import { TicketPurchase } from '../components/tickets/TicketPurchase'
 import { getEventById } from '../services/api/events'
-import type { ApiError, EventResponseDto } from '../types/api'
+import type { ApiError } from '../types/api'
+import type { EventResponseDto } from '../types/events'
 import { formatEventDate, formatEventPrice } from '../utils/formatters'
 
 export function EventDetailsPage() {

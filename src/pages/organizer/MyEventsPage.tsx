@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 
 import { EventCard } from "../../components/events/EventCard";
 import { getMyEvents } from "../../services/api/events";
-import type { ApiError, EventResponseDto, PaginationDto } from "../../types/api";
+import type { ApiError, PaginationDto } from "../../types/api";
+import type { EventResponseDto } from "../../types/events";
 
 const pageSize = 6;
 

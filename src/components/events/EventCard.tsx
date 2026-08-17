@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import type { EventResponseDto } from '../../types/api'
+import type { EventResponseDto } from '../../types/events'
 import { formatEventDate, formatEventPrice } from '../../utils/formatters'
 
 interface EventCardProps {
