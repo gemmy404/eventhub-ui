@@ -66,6 +66,17 @@ export function Navbar() {
                             My Tickets
                         </NavLink>
                     )}
+                    {isAuthenticated && user?.role === "ORGANIZER" && (
+                        <NavLink
+                            className={({ isActive }) =>
+                                `primary-navigation__link${isActive ? " is-active" : ""}`
+                            }
+                            to="/my-events"
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            My Events
+                        </NavLink>
+                    )}
                 </nav>
 
                 <div className="auth-navigation">
