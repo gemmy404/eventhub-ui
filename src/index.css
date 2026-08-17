@@ -772,6 +772,12 @@ h1 span {
     resize: vertical;
 }
 
+#event-details-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
 .form-field input:focus,
 .form-field textarea:focus,
 .form-field select:focus {

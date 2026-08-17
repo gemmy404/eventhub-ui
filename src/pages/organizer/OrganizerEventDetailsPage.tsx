@@ -137,8 +137,11 @@ export function OrganizerEventDetailsPage() {
                     )}
                 </dl>
 
-                <br />
-                <div className="organizer-event-details__actions">
+                <div className="organizer-event-details__actions" id="event-details-actions">
+                    <Link className="button button--primary" to={`/my-events/${event.id}/edit`}>
+                        Edit Event
+                    </Link>
+
                     <Link className="button button--secondary" to="/my-events">
                         Back to My Events
                     </Link>

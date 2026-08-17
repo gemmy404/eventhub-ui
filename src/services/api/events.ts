@@ -1,6 +1,6 @@
 import { apiClient } from "./client";
 import type { AppResponseDto } from "../../types/api";
-import type { EventResponseDto, CreateEventRequestDto } from "../../types/events";
+import type { EventResponseDto, CreateEventRequestDto, UpdateEventRequestDto } from "../../types/events";
 
 export interface GetEventsParams {
     page?: number;
@@ -36,6 +36,15 @@ export async function getMyEvents({ page = 1, size = 6 }: GetEventsParams = {}):
 
 export async function createEvent(request: CreateEventRequestDto): Promise<AppResponseDto<EventResponseDto>> {
     const response = await apiClient.post<AppResponseDto<EventResponseDto>>("/events", request);
+
+    return response.data;
+}
+
+export async function updateEvent(
+    eventId: string,
+    request: UpdateEventRequestDto,
+): Promise<AppResponseDto<EventResponseDto>> {
+    const response = await apiClient.patch<AppResponseDto<EventResponseDto>>(`/events/${eventId}`, request);
 
     return response.data;
 }

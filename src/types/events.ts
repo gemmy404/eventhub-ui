@@ -21,3 +21,12 @@ export interface CreateEventRequestDto {
     price: number;
     status: EventStatus;
 }
+
+export interface UpdateEventRequestDto {
+    title?: string;
+    description?: string;
+    date?: string;
+    location?: string;
+    capacity?: number;
+    price?: number;
+}

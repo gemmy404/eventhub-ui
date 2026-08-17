@@ -14,6 +14,7 @@ import { TicketDetailsPage } from "../pages/tickets/TicketDetailsPage";
 import { MyEventsPage } from "../pages/organizer/MyEventsPage";
 import { CreateEventPage } from "../pages/organizer/CreateEventPage";
 import { OrganizerEventDetailsPage } from "../pages/organizer/OrganizerEventDetailsPage";
+import { EditEventPage } from "../pages/organizer/EditEventPage";
 
 export const router = createBrowserRouter([
     {
@@ -58,6 +59,10 @@ export const router = createBrowserRouter([
                     {
                         path: "my-events/:eventId",
                         element: <OrganizerEventDetailsPage />,
+                    },
+                    {
+                        path: "my-events/:eventId/edit",
+                        element: <EditEventPage />,
                     },
                 ],
             },
