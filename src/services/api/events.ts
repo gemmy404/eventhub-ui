@@ -34,4 +34,8 @@ export async function getMyEvents({ page = 1, size = 6 }: GetEventsParams = {}):
     return response.data;
 }
 
-export async function createEvent(request: CreateEventRequestDto) {}
+export async function createEvent(request: CreateEventRequestDto): Promise<AppResponseDto<EventResponseDto>> {
+    const response = await apiClient.post<AppResponseDto<EventResponseDto>>("/events", request);
+
+    return response.data;
+}

@@ -12,6 +12,8 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import { MyTicketsPage } from "../pages/tickets/MyTicketsPage";
 import { TicketDetailsPage } from "../pages/tickets/TicketDetailsPage";
 import { MyEventsPage } from "../pages/organizer/MyEventsPage";
+import { CreateEventPage } from "../pages/organizer/CreateEventPage";
+import { OrganizerEventDetailsPage } from "../pages/organizer/OrganizerEventDetailsPage";
 
 export const router = createBrowserRouter([
     {
@@ -48,6 +50,14 @@ export const router = createBrowserRouter([
                     {
                         path: "my-events",
                         element: <MyEventsPage />,
+                    },
+                    {
+                        path: "my-events/create",
+                        element: <CreateEventPage />,
+                    },
+                    {
+                        path: "my-events/:eventId",
+                        element: <OrganizerEventDetailsPage />,
                     },
                 ],
             },

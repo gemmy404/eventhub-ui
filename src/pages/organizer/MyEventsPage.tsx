@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import { EventCard } from "../../components/events/EventCard";
 import { getMyEvents } from "../../services/api/events";
@@ -58,6 +59,10 @@ export function MyEventsPage() {
                 <h1 id="my-events-title">Manage your events.</h1>
 
                 <p>View and manage the events you have created on EventHub.</p>
+
+                <Link className="button button--primary" to="/my-events/create">
+                    Create Event
+                </Link>
             </header>
 
             {isLoading && (
@@ -95,7 +100,7 @@ export function MyEventsPage() {
                 <>
                     <div className="event-grid">
                         {events.map((event) => (
-                            <EventCard key={event.id} event={event} />
+                            <EventCard key={event.id} event={event} detailsPath={`/my-events/${event.id}`} />
                         ))}
                     </div>
 

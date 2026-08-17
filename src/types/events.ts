@@ -11,3 +11,13 @@ export interface EventResponseDto {
     status: EventStatus;
     organizerName?: string;
 }
+
+export interface CreateEventRequestDto {
+    title: string;
+    description?: string;
+    date: string;
+    location: string;
+    capacity: number;
+    price: number;
+    status: EventStatus;
+}
