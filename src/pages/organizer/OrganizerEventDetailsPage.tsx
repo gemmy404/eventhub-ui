@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { getEventById, publishEvent } from "../../services/api/events";
+import { getEventById, publishEvent, cancelEvent } from "../../services/api/events";
 import type { ApiError } from "../../types/api";
 import type { EventResponseDto } from "../../types/events";
 import { formatEventDate, formatEventPrice } from "../../utils/formatters";
@@ -12,8 +12,9 @@ export function OrganizerEventDetailsPage() {
     const [event, setEvent] = useState<EventResponseDto>();
     const [error, setError] = useState<ApiError>();
     const [isLoading, setIsLoading] = useState(true);
-    const [isPublishing, setIsPublishing] = useState(false);
     const [retryCount, setRetryCount] = useState(0);
+    const [isPublishing, setIsPublishing] = useState(false);
+    const [isCancelling, setIsCancelling] = useState(false);
 
     useEffect(() => {
         let isCurrent = true;
@@ -109,6 +110,27 @@ export function OrganizerEventDetailsPage() {
         }
     }
 
+    async function handleCancel() {
+        if (!eventId) return;
+
+        const confirmed = window.confirm("Are you sure you want to cancel this event?");
+
+        if (!confirmed) return;
+
+        try {
+            setError(undefined);
+            setIsCancelling(true);
+
+            const response = await cancelEvent(eventId);
+
+            setEvent(response.data);
+        } catch (requestError: unknown) {
+            setError(requestError as ApiError);
+        } finally {
+            setIsCancelling(false);
+        }
+    }
+
     return (
         <article className="event-details" aria-labelledby="organizer-event-title">
             <Link className="back-link" to="/my-events">
@@ -164,6 +186,17 @@ export function OrganizerEventDetailsPage() {
                             disabled={isPublishing}
                         >
                             {isPublishing ? "Publishing…" : "Publish Event"}
+                        </button>
+                    )}
+
+                    {event.status === "PUBLISHED" && (
+                        <button
+                            className="button button--danger"
+                            type="button"
+                            onClick={handleCancel}
+                            disabled={isCancelling}
+                        >
+                            {isCancelling ? "Cancelling…" : "Cancel Event"}
                         </button>
                     )}
 

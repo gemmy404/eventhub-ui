@@ -778,6 +778,20 @@ h1 span {
     margin-top: 1.5rem;
 }
 
+.button--danger {
+    background: #dc2626;
+    color: #fff;
+}
+
+.button--danger:hover:not(:disabled) {
+    background: #b91c1c;
+}
+
+.button--danger:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
 .form-field input:focus,
 .form-field textarea:focus,
 .form-field select:focus {

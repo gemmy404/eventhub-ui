@@ -56,3 +56,11 @@ export async function publishEvent(eventId: string): Promise<AppResponseDto<Even
 
     return response.data;
 }
+
+export async function cancelEvent(eventId: string): Promise<AppResponseDto<EventResponseDto>> {
+    const response = await apiClient.patch<AppResponseDto<EventResponseDto>>(
+        `/events/${eventId}/cancel-event`,
+    );
+
+    return response.data;
+}
