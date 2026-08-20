@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { getEventById } from "../../services/api/events";
+import { getEventById, publishEvent } from "../../services/api/events";
 import type { ApiError } from "../../types/api";
 import type { EventResponseDto } from "../../types/events";
 import { formatEventDate, formatEventPrice } from "../../utils/formatters";
@@ -12,6 +12,7 @@ export function OrganizerEventDetailsPage() {
     const [event, setEvent] = useState<EventResponseDto>();
     const [error, setError] = useState<ApiError>();
     const [isLoading, setIsLoading] = useState(true);
+    const [isPublishing, setIsPublishing] = useState(false);
     const [retryCount, setRetryCount] = useState(0);
 
     useEffect(() => {
@@ -91,6 +92,23 @@ export function OrganizerEventDetailsPage() {
         );
     }
 
+    async function handlePublish() {
+        if (!eventId) return;
+
+        try {
+            setError(undefined);
+            setIsPublishing(true);
+
+            const response = await publishEvent(eventId);
+
+            setEvent(response.data);
+        } catch (requestError: unknown) {
+            setError(requestError as ApiError);
+        } finally {
+            setIsPublishing(false);
+        }
+    }
+
     return (
         <article className="event-details" aria-labelledby="organizer-event-title">
             <Link className="back-link" to="/my-events">
@@ -138,7 +156,18 @@ export function OrganizerEventDetailsPage() {
                 </dl>
 
                 <div className="organizer-event-details__actions" id="event-details-actions">
-                    <Link className="button button--primary" to={`/my-events/${event.id}/edit`}>
+                    {event.status === "DRAFT" && (
+                        <button
+                            className="button button--primary"
+                            type="button"
+                            onClick={handlePublish}
+                            disabled={isPublishing}
+                        >
+                            {isPublishing ? "Publishing…" : "Publish Event"}
+                        </button>
+                    )}
+
+                    <Link className="button button--secondary" to={`/my-events/${event.id}/edit`}>
                         Edit Event
                     </Link>
 

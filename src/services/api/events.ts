@@ -48,3 +48,11 @@ export async function updateEvent(
 
     return response.data;
 }
+
+export async function publishEvent(eventId: string): Promise<AppResponseDto<EventResponseDto>> {
+    const response = await apiClient.patch<AppResponseDto<EventResponseDto>>(
+        `/events/${eventId}/publish-event`,
+    );
+
+    return response.data;
+}
