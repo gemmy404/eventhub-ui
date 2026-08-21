@@ -723,6 +723,88 @@ h1 span {
     border-right: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
 }
+.form-page {
+    width: min(100%, 58rem);
+    margin-inline: auto;
+}
+
+.event-form {
+    display: grid;
+    gap: 1.25rem;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-md);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.form-field {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.form-field label {
+    color: var(--color-background);
+    font-size: 0.85rem;
+    font-weight: 800;
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+    width: 100%;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    padding: 0.8rem 0.9rem;
+    font: inherit;
+    outline: none;
+}
+
+.form-field textarea {
+    min-height: 8rem;
+    resize: vertical;
+}
+
+#event-details-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.button--danger {
+    background: #dc2626;
+    color: #fff;
+}
+
+.button--danger:hover:not(:disabled) {
+    background: #b91c1c;
+}
+
+.button--danger:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgb(249 115 22 / 0.15);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
 .ticket-purchase {
     margin-top: 2.25rem;
     padding: clamp(1.25rem, 3vw, 2rem);
@@ -891,6 +973,117 @@ h1 span {
     padding-top: 1.5rem;
     border-top: 1px solid var(--color-border);
 }
+
+.event-tickets-table-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    -webkit-overflow-scrolling: touch;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+}
+
+.event-tickets-table {
+    width: 100%;
+    min-width: 1050px;
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+.event-tickets-table th,
+.event-tickets-table td {
+    padding: 1rem 1.15rem;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: middle;
+}
+
+.event-tickets-table th {
+    background: var(--color-surface-muted);
+    color: var(--color-text-muted);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.event-tickets-table td {
+    color: var(--color-text);
+    font-size: 0.9rem;
+}
+
+/* Center specific columns */
+.event-tickets-table th:nth-child(1),
+.event-tickets-table td:nth-child(1),
+.event-tickets-table th:nth-child(4),
+.event-tickets-table td:nth-child(4),
+.event-tickets-table th:nth-child(5),
+.event-tickets-table td:nth-child(5),
+.event-tickets-table th:nth-child(7),
+.event-tickets-table td:nth-child(7),
+.event-tickets-table th:nth-child(8),
+.event-tickets-table td:nth-child(8) {
+    text-align: center;
+}
+
+/* Attendee */
+.event-tickets-table__attendee {
+    color: var(--color-background);
+    font-weight: 750;
+}
+
+/* Ticket code */
+.event-tickets-table__code {
+    display: inline-block;
+    color: var(--color-primary-hover);
+    font-family: monospace;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+
+/* Status */
+.event-tickets-table .status-badge {
+    display: inline-flex;
+    justify-content: center;
+    min-width: 90px;
+}
+
+/* Action */
+.event-tickets-table .ticket-check-in {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.event-tickets-table .ticket-check-in .button {
+    width: auto;
+    min-width: 90px;
+    padding: 0.55rem 0.8rem;
+    font-size: 0.8rem;
+}
+
+.event-tickets-table__no-action {
+    display: inline-block;
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
+/* Last row */
+.event-tickets-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.event-tickets-table tbody tr:hover {
+    background: #fffaf5;
+}
+
 .about-page {
     width: 100%;
 }
@@ -1082,6 +1275,65 @@ h1 span {
     font-size: 0.8rem;
 }
 
+@media (max-width: 900px) {
+    .event-tickets-table-wrapper {
+        border-radius: var(--radius-sm);
+    }
+
+    .event-tickets-table {
+        min-width: 950px;
+    }
+
+    .event-tickets-table th,
+    .event-tickets-table td {
+        padding: 0.85rem 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .organizer-tickets-page {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .event-tickets-table-wrapper {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        border-radius: var(--radius-sm);
+    }
+
+    .event-tickets-table {
+        min-width: 1050px;
+    }
+}
+
+@media (max-width: 640px) {
+    .event-tickets-table-wrapper {
+        margin-right: -1rem;
+        margin-left: -1rem;
+        width: calc(100% + 2rem);
+        border-right: 0;
+        border-left: 0;
+        border-radius: 0;
+    }
+
+    .event-tickets-table {
+        min-width: 900px;
+    }
+
+    .event-tickets-table th,
+    .event-tickets-table td {
+        padding: 0.75rem 0.8rem;
+        font-size: 0.82rem;
+    }
+
+    .event-tickets-table th {
+        font-size: 0.68rem;
+    }
+}
+
 @media (max-width: 56rem) {
     .hero {
         grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.82fr);
@@ -1194,6 +1446,18 @@ h1 span {
     }
     .event-details__list {
         grid-template-columns: 1fr;
+    }
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .form-actions .button {
+        width: 100%;
+        justify-content: center;
     }
     .ticket-summary {
         grid-template-columns: 1fr;

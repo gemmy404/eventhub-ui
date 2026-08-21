@@ -1,21 +1,66 @@
-import { apiClient } from './client'
-import type { AppResponseDto, EventResponseDto } from '../../types/api'
+import { apiClient } from "./client";
+import type { AppResponseDto } from "../../types/api";
+import type { EventResponseDto, CreateEventRequestDto, UpdateEventRequestDto } from "../../types/events";
 
 export interface GetEventsParams {
-  page?: number
-  size?: number
+    page?: number;
+    size?: number;
 }
 
 export async function getEvents({ page = 1, size = 10 }: GetEventsParams = {}) {
-  const response = await apiClient.get<AppResponseDto<EventResponseDto[]>>('/events', {
-    params: { page, size },
-  })
+    const response = await apiClient.get<AppResponseDto<EventResponseDto[]>>("/events", {
+        params: { page, size },
+    });
 
-  return response.data
+    return response.data;
 }
 
 export async function getEventById(eventId: string) {
-  const response = await apiClient.get<AppResponseDto<EventResponseDto>>(`/events/${eventId}`)
+    const response = await apiClient.get<AppResponseDto<EventResponseDto>>(`/events/${eventId}`);
 
-  return response.data
+    return response.data;
+}
+
+export async function getMyEvents({ page = 1, size = 6 }: GetEventsParams = {}): Promise<
+    AppResponseDto<EventResponseDto[]>
+> {
+    const response = await apiClient.get<AppResponseDto<EventResponseDto[]>>("/events/me", {
+        params: {
+            page,
+            size,
+        },
+    });
+
+    return response.data;
+}
+
+export async function createEvent(request: CreateEventRequestDto): Promise<AppResponseDto<EventResponseDto>> {
+    const response = await apiClient.post<AppResponseDto<EventResponseDto>>("/events", request);
+
+    return response.data;
+}
+
+export async function updateEvent(
+    eventId: string,
+    request: UpdateEventRequestDto,
+): Promise<AppResponseDto<EventResponseDto>> {
+    const response = await apiClient.patch<AppResponseDto<EventResponseDto>>(`/events/${eventId}`, request);
+
+    return response.data;
+}
+
+export async function publishEvent(eventId: string): Promise<AppResponseDto<EventResponseDto>> {
+    const response = await apiClient.patch<AppResponseDto<EventResponseDto>>(
+        `/events/${eventId}/publish-event`,
+    );
+
+    return response.data;
+}
+
+export async function cancelEvent(eventId: string): Promise<AppResponseDto<EventResponseDto>> {
+    const response = await apiClient.patch<AppResponseDto<EventResponseDto>>(
+        `/events/${eventId}/cancel-event`,
+    );
+
+    return response.data;
 }
