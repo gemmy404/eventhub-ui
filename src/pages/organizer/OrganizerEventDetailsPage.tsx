@@ -204,6 +204,10 @@ export function OrganizerEventDetailsPage() {
                         Edit Event
                     </Link>
 
+                    <Link className="button button--secondary" to={`/my-events/${event.id}/tickets`}>
+                        View Tickets
+                    </Link>
+
                     <Link className="button button--secondary" to="/my-events">
                         Back to My Events
                     </Link>

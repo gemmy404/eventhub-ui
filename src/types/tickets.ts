@@ -26,3 +26,7 @@ export interface EventTicketResponseDto {
     ticketOwnerEmail: string;
     ticketOwnerName: string;
 }
+
+export interface CheckedInTicketRequest {
+    ticketCode: string;
+}

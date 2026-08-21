@@ -1,5 +1,10 @@
 import type { AppResponseDto } from "../../types/api";
-import type { PurchaseTicketRequest, TicketResponseDto } from "../../types/tickets";
+import type {
+    PurchaseTicketRequest,
+    TicketResponseDto,
+    EventTicketResponseDto,
+    CheckedInTicketRequest,
+} from "../../types/tickets";
 import { apiClient } from "./client";
 
 export interface GetTicketsParams {
@@ -35,6 +40,29 @@ export async function getTicketById(ticketId: string): Promise<AppResponseDto<Ti
 
 export async function cancelTicket(ticketId: string): Promise<AppResponseDto<null>> {
     const response = await apiClient.patch<AppResponseDto<null>>(`/tickets/${ticketId}/cancel-ticket`);
+
+    return response.data;
+}
+
+export async function getEventTickets(
+    eventId: string,
+    { page = 1, size = 6 }: GetTicketsParams = {},
+): Promise<AppResponseDto<EventTicketResponseDto[]>> {
+    const response = await apiClient.get<AppResponseDto<EventTicketResponseDto[]>>(
+        `/tickets/events/${eventId}`,
+        {
+            params: {
+                page,
+                size,
+            },
+        },
+    );
+
+    return response.data;
+}
+
+export async function checkInTicket(request: CheckedInTicketRequest): Promise<AppResponseDto<null>> {
+    const response = await apiClient.patch<AppResponseDto<null>>("/tickets/check-in-ticket", request);
 
     return response.data;
 }
