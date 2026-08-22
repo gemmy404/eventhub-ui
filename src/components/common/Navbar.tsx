@@ -55,7 +55,7 @@ export function Navbar() {
                     >
                         About
                     </NavLink>
-                    {isAuthenticated && (
+                    {isAuthenticated && user?.role === "USER" && (
                         <NavLink
                             className={({ isActive }) =>
                                 `primary-navigation__link${isActive ? " is-active" : ""}`
@@ -75,6 +75,17 @@ export function Navbar() {
                             onClick={() => setIsMenuOpen(false)}
                         >
                             My Events
+                        </NavLink>
+                    )}
+                    {isAuthenticated && user?.role === "ADMIN" && (
+                        <NavLink
+                            className={({ isActive }) =>
+                                `primary-navigation__link${isActive ? " is-active" : ""}`
+                            }
+                            to="/admin"
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            Admin Dashboard
                         </NavLink>
                     )}
                 </nav>

@@ -1275,6 +1275,371 @@ h1 span {
     font-size: 0.8rem;
 }
 
+/* ================================
+   Admin Dashboard
+   ================================ */
+
+.admin-layout {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    min-height: calc(100vh - var(--header-height));
+    background: var(--color-surface-muted);
+}
+
+.admin-sidebar {
+    position: sticky;
+    top: var(--header-height);
+    height: calc(100vh - var(--header-height));
+    padding: 1.5rem 1rem;
+    border-right: 1px solid var(--color-border);
+    background: var(--color-surface);
+}
+
+.admin-sidebar__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.admin-sidebar__brand-mark {
+    display: grid;
+    width: 2.4rem;
+    height: 2.4rem;
+    place-items: center;
+    border-radius: 0.65rem;
+    background: var(--color-primary);
+    color: white;
+    font-weight: 800;
+}
+
+.admin-sidebar__brand div {
+    display: grid;
+    gap: 0.1rem;
+}
+
+.admin-sidebar__brand strong {
+    color: var(--color-text);
+    font-size: 1rem;
+}
+
+.admin-sidebar__brand span {
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+}
+
+.admin-sidebar__navigation {
+    display: grid;
+    gap: 0.35rem;
+    margin-top: 1.25rem;
+}
+
+.admin-sidebar__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 2.75rem;
+    padding: 0.7rem 0.85rem;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+        background-color 150ms ease,
+        color 150ms ease;
+}
+
+.admin-sidebar__link:hover {
+    background: var(--color-surface-muted);
+    color: var(--color-text);
+}
+
+.admin-sidebar__link.is-active {
+    background: #fff0e8;
+    color: var(--color-primary-hover);
+}
+
+.admin-sidebar__link--disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
+.admin-sidebar__link--disabled:hover {
+    background: transparent;
+    color: var(--color-text-muted);
+}
+
+.admin-sidebar__link small {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.admin-layout__content {
+    min-width: 0;
+    padding: 3rem;
+}
+
+/* Dashboard */
+
+.admin-dashboard {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.admin-dashboard__heading {
+    max-width: 720px;
+}
+
+.admin-dashboard__heading h1 {
+    margin: 0.5rem 0 1rem;
+}
+
+.admin-dashboard__heading p:last-child {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+}
+
+.admin-dashboard__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2.5rem;
+}
+
+.admin-dashboard__card {
+    display: grid;
+    gap: 0.5rem;
+    min-height: 150px;
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+}
+
+.admin-dashboard__card span {
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.admin-dashboard__card strong {
+    color: var(--color-text);
+    font-size: 1.6rem;
+}
+
+.admin-dashboard__card small {
+    color: var(--color-text-muted);
+}
+
+.admin-dashboard__card--disabled {
+    opacity: 0.5;
+}
+
+/* ================================
+   Admin Users
+   ================================ */
+
+.admin-users-page {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.admin-users-page__heading-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.admin-users-page__heading-row p {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+}
+
+.admin-users-page__toolbar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 2rem 0 1rem;
+}
+
+.admin-users-page__toolbar label {
+    color: var(--color-text);
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.admin-users-page__toolbar select {
+    min-width: 160px;
+    padding: 0.65rem 2rem 0.65rem 0.8rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font: inherit;
+}
+
+.admin-users-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+}
+
+.admin-users-table {
+    width: 100%;
+    min-width: 650px;
+    border-collapse: collapse;
+}
+
+.admin-users-table th,
+.admin-users-table td {
+    padding: 1.1rem 1.25rem;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+}
+
+.admin-users-table th {
+    background: var(--color-surface-muted);
+    color: var(--color-text-muted);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.admin-users-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.admin-users-table tbody tr:hover {
+    background: #fafafa;
+}
+
+.admin-users-table__name {
+    color: var(--color-text);
+    font-weight: 800;
+}
+
+.admin-users-table__email {
+    color: var(--color-text-muted);
+}
+
+.admin-role-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 90px;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+
+.admin-role-badge--admin {
+    background: #ede9fe;
+    color: #6d28d9;
+}
+
+.admin-role-badge--organizer {
+    background: #fff0e8;
+    color: var(--color-primary-hover);
+}
+
+.admin-role-badge--user {
+    background: #e8f5ee;
+    color: #16704a;
+}
+
+/* ================================
+   Admin Create User
+   ================================ */
+
+.admin-create-user-page {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.admin-create-user-card {
+    max-width: 720px;
+    margin-top: 2rem;
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+}
+
+.admin-create-user-form {
+    display: grid;
+    gap: 0.65rem;
+}
+
+.admin-create-user-form label {
+    display: grid;
+    gap: 0.45rem;
+    margin-top: 0.5rem;
+    color: var(--color-text);
+    font-size: 0.85rem;
+    font-weight: 750;
+}
+
+.admin-create-user-form input,
+.admin-create-user-form select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75rem 0.85rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font: inherit;
+}
+
+.admin-create-user-form input:focus,
+.admin-create-user-form select:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 1px;
+}
+
+.admin-create-user-form input[aria-invalid="true"],
+.admin-create-user-form select[aria-invalid="true"] {
+    border-color: #c94a4a;
+}
+
+.admin-create-user-form .field-error {
+    margin: 0;
+}
+
+.admin-create-user-form__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.form-alert--success {
+    border-color: #b7dfc8;
+    background: #edf9f2;
+    color: #16704a;
+}
+
 @media (max-width: 900px) {
     .event-tickets-table-wrapper {
         border-radius: var(--radius-sm);
@@ -1287,6 +1652,38 @@ h1 span {
     .event-tickets-table th,
     .event-tickets-table td {
         padding: 0.85rem 0.9rem;
+    }
+}
+
+@media (max-width: 800px) {
+    .admin-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        position: static;
+        height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .admin-sidebar__navigation {
+        display: flex;
+        gap: 0.5rem;
+        overflow-x: auto;
+        padding-bottom: 0.25rem;
+    }
+
+    .admin-sidebar__link {
+        flex: 0 0 auto;
+    }
+
+    .admin-layout__content {
+        padding: 2rem 1rem;
+    }
+
+    .admin-dashboard__grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -1306,6 +1703,30 @@ h1 span {
 
     .event-tickets-table {
         min-width: 1050px;
+    }
+}
+
+@media (max-width: 700px) {
+    .admin-users-page__heading-row {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .admin-users-page__heading-row .button {
+        width: 100%;
+    }
+
+    .admin-users-page__toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .admin-users-page__toolbar select {
+        width: 100%;
+    }
+
+    .admin-users-table-wrapper {
+        border-radius: var(--radius-sm);
     }
 }
 
@@ -1331,6 +1752,18 @@ h1 span {
 
     .event-tickets-table th {
         font-size: 0.68rem;
+    }
+
+    .admin-create-user-card {
+        padding: 1.25rem;
+    }
+
+    .admin-create-user-form__actions {
+        flex-direction: column-reverse;
+    }
+
+    .admin-create-user-form__actions .button {
+        width: 100%;
     }
 }
 
