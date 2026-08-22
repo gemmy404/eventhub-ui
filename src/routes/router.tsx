@@ -16,6 +16,8 @@ import { CreateEventPage } from "../pages/organizer/CreateEventPage";
 import { OrganizerEventDetailsPage } from "../pages/organizer/OrganizerEventDetailsPage";
 import { EditEventPage } from "../pages/organizer/EditEventPage";
 import { OrganizerEventTicketsPage } from "../pages/organizer/OrganizerEventTicketsPage";
+import { AdminLayout } from "../layouts/AdminLayout";
+import { AdminDashboardPage } from "../pages/admin/AdminDashboardPage";
 
 export const router = createBrowserRouter([
     {
@@ -68,6 +70,21 @@ export const router = createBrowserRouter([
                     {
                         path: "my-events/:eventId/tickets",
                         element: <OrganizerEventTicketsPage />,
+                    },
+                ],
+            },
+            {
+                element: <ProtectedRoute allowedRoles={["ADMIN"]} />,
+                children: [
+                    {
+                        path: "admin",
+                        element: <AdminLayout />,
+                        children: [
+                            {
+                                index: true,
+                                element: <AdminDashboardPage />,
+                            },
+                        ],
                     },
                 ],
             },

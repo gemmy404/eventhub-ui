@@ -1275,6 +1275,174 @@ h1 span {
     font-size: 0.8rem;
 }
 
+/* ================================
+   Admin Dashboard
+   ================================ */
+
+.admin-layout {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    min-height: calc(100vh - var(--header-height));
+    background: var(--color-surface-muted);
+}
+
+.admin-sidebar {
+    position: sticky;
+    top: var(--header-height);
+    height: calc(100vh - var(--header-height));
+    padding: 1.5rem 1rem;
+    border-right: 1px solid var(--color-border);
+    background: var(--color-surface);
+}
+
+.admin-sidebar__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.admin-sidebar__brand-mark {
+    display: grid;
+    width: 2.4rem;
+    height: 2.4rem;
+    place-items: center;
+    border-radius: 0.65rem;
+    background: var(--color-primary);
+    color: white;
+    font-weight: 800;
+}
+
+.admin-sidebar__brand div {
+    display: grid;
+    gap: 0.1rem;
+}
+
+.admin-sidebar__brand strong {
+    color: var(--color-text);
+    font-size: 1rem;
+}
+
+.admin-sidebar__brand span {
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+}
+
+.admin-sidebar__navigation {
+    display: grid;
+    gap: 0.35rem;
+    margin-top: 1.25rem;
+}
+
+.admin-sidebar__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 2.75rem;
+    padding: 0.7rem 0.85rem;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+        background-color 150ms ease,
+        color 150ms ease;
+}
+
+.admin-sidebar__link:hover {
+    background: var(--color-surface-muted);
+    color: var(--color-text);
+}
+
+.admin-sidebar__link.is-active {
+    background: #fff0e8;
+    color: var(--color-primary-hover);
+}
+
+.admin-sidebar__link--disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
+.admin-sidebar__link--disabled:hover {
+    background: transparent;
+    color: var(--color-text-muted);
+}
+
+.admin-sidebar__link small {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.admin-layout__content {
+    min-width: 0;
+    padding: 3rem;
+}
+
+/* Dashboard */
+
+.admin-dashboard {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.admin-dashboard__heading {
+    max-width: 720px;
+}
+
+.admin-dashboard__heading h1 {
+    margin: 0.5rem 0 1rem;
+}
+
+.admin-dashboard__heading p:last-child {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+}
+
+.admin-dashboard__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2.5rem;
+}
+
+.admin-dashboard__card {
+    display: grid;
+    gap: 0.5rem;
+    min-height: 150px;
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+}
+
+.admin-dashboard__card span {
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.admin-dashboard__card strong {
+    color: var(--color-text);
+    font-size: 1.6rem;
+}
+
+.admin-dashboard__card small {
+    color: var(--color-text-muted);
+}
+
+.admin-dashboard__card--disabled {
+    opacity: 0.5;
+}
+
 @media (max-width: 900px) {
     .event-tickets-table-wrapper {
         border-radius: var(--radius-sm);
@@ -1287,6 +1455,38 @@ h1 span {
     .event-tickets-table th,
     .event-tickets-table td {
         padding: 0.85rem 0.9rem;
+    }
+}
+
+@media (max-width: 800px) {
+    .admin-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        position: static;
+        height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .admin-sidebar__navigation {
+        display: flex;
+        gap: 0.5rem;
+        overflow-x: auto;
+        padding-bottom: 0.25rem;
+    }
+
+    .admin-sidebar__link {
+        flex: 0 0 auto;
+    }
+
+    .admin-layout__content {
+        padding: 2rem 1rem;
+    }
+
+    .admin-dashboard__grid {
+        grid-template-columns: 1fr;
     }
 }
 

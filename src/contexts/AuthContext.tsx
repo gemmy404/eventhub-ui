@@ -16,7 +16,7 @@ interface AuthContextValue {
     accessToken: string | null;
     isAuthenticated: boolean;
     isLoading: boolean;
-    login: (request: LoginRequest) => Promise<void>;
+    login: (request: LoginRequest) => Promise<AuthUser>;
     register: (request: RegisterRequest) => ReturnType<typeof registerRequest>;
     logout: () => void;
 }
@@ -47,14 +47,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         };
     }, []);
 
-    async function login(request: LoginRequest) {
+    async function login(request: LoginRequest): Promise<AuthUser> {
         setIsLoading(true);
+
         try {
             const response = await loginRequest(request);
+
             setAccessToken(response.data.accessToken);
             setStoredUser(response.data.user);
+
             setToken(response.data.accessToken);
             setUser(response.data.user);
+
+            return response.data.user;
         } finally {
             setIsLoading(false);
         }
