@@ -18,6 +18,7 @@ import { EditEventPage } from "../pages/organizer/EditEventPage";
 import { OrganizerEventTicketsPage } from "../pages/organizer/OrganizerEventTicketsPage";
 import { AdminLayout } from "../layouts/AdminLayout";
 import { AdminDashboardPage } from "../pages/admin/AdminDashboardPage";
+import { AdminUsersPage } from "../pages/admin/AdminUsersPage";
 
 export const router = createBrowserRouter([
     {
@@ -83,6 +84,10 @@ export const router = createBrowserRouter([
                             {
                                 index: true,
                                 element: <AdminDashboardPage />,
+                            },
+                            {
+                                path: "users",
+                                element: <AdminUsersPage />,
                             },
                         ],
                     },
