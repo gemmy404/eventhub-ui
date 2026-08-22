@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import { UserTable } from "../../components/admin/UserTable";
 import { getAllUsers } from "../../services/api/admin";
@@ -77,9 +78,9 @@ export function AdminUsersPage() {
                         <p>Manage EventHub users and organizers from one place.</p>
                     </div>
 
-                    <button className="button button--primary" type="button">
+                    <Link className="button button--primary" to="/admin/users/create">
                         Create User
-                    </button>
+                    </Link>
                 </div>
             </header>
 

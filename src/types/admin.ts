@@ -1,4 +1,3 @@
-import type { PaginationDto } from "./api";
 import type { UserRole } from "./auth";
 
 export interface AdminUser {
@@ -14,7 +13,13 @@ export interface GetUsersParams {
     role?: UserRole;
 }
 
-// export interface AdminUsersResponse {
-//     users: AdminUser[];
-//     pagination?: PaginationDto;
-// }
+export interface CreateUserRequest {
+    name: string;
+    email: string;
+    password: string;
+    role: UserRole;
+}
+
+export interface CreateUserResponse {
+    userId: string;
+}

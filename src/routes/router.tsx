@@ -19,6 +19,7 @@ import { OrganizerEventTicketsPage } from "../pages/organizer/OrganizerEventTick
 import { AdminLayout } from "../layouts/AdminLayout";
 import { AdminDashboardPage } from "../pages/admin/AdminDashboardPage";
 import { AdminUsersPage } from "../pages/admin/AdminUsersPage";
+import { CreateUserPage } from "../pages/admin/CreateUserPage";
 
 export const router = createBrowserRouter([
     {
@@ -88,6 +89,10 @@ export const router = createBrowserRouter([
                             {
                                 path: "users",
                                 element: <AdminUsersPage />,
+                            },
+                            {
+                                path: "users/create",
+                                element: <CreateUserPage />,
                             },
                         ],
                     },

@@ -1564,6 +1564,82 @@ h1 span {
     color: #16704a;
 }
 
+/* ================================
+   Admin Create User
+   ================================ */
+
+.admin-create-user-page {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.admin-create-user-card {
+    max-width: 720px;
+    margin-top: 2rem;
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+}
+
+.admin-create-user-form {
+    display: grid;
+    gap: 0.65rem;
+}
+
+.admin-create-user-form label {
+    display: grid;
+    gap: 0.45rem;
+    margin-top: 0.5rem;
+    color: var(--color-text);
+    font-size: 0.85rem;
+    font-weight: 750;
+}
+
+.admin-create-user-form input,
+.admin-create-user-form select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75rem 0.85rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font: inherit;
+}
+
+.admin-create-user-form input:focus,
+.admin-create-user-form select:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 1px;
+}
+
+.admin-create-user-form input[aria-invalid="true"],
+.admin-create-user-form select[aria-invalid="true"] {
+    border-color: #c94a4a;
+}
+
+.admin-create-user-form .field-error {
+    margin: 0;
+}
+
+.admin-create-user-form__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.form-alert--success {
+    border-color: #b7dfc8;
+    background: #edf9f2;
+    color: #16704a;
+}
+
 @media (max-width: 900px) {
     .event-tickets-table-wrapper {
         border-radius: var(--radius-sm);
@@ -1676,6 +1752,18 @@ h1 span {
 
     .event-tickets-table th {
         font-size: 0.68rem;
+    }
+
+    .admin-create-user-card {
+        padding: 1.25rem;
+    }
+
+    .admin-create-user-form__actions {
+        flex-direction: column-reverse;
+    }
+
+    .admin-create-user-form__actions .button {
+        width: 100%;
     }
 }
 
