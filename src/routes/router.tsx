@@ -1,36 +1,119 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter } from "react-router-dom";
 
-import { RootLayout } from '../layouts/RootLayout'
-import { AboutPage } from '../pages/AboutPage'
-import { EventDetailsPage } from '../pages/EventDetailsPage'
-import { EventsPage } from '../pages/EventsPage'
-import { HomePage } from '../pages/HomePage'
-import { NotFoundPage } from '../pages/NotFoundPage'
+import { RootLayout } from "../layouts/RootLayout";
+import { AboutPage } from "../pages/AboutPage";
+import { EventDetailsPage } from "../pages/EventDetailsPage";
+import { EventsPage } from "../pages/EventsPage";
+import { HomePage } from "../pages/HomePage";
+import { NotFoundPage } from "../pages/NotFoundPage";
+import { LoginPage } from "../pages/auth/LoginPage";
+import { RegisterPage } from "../pages/auth/RegisterPage";
+import { ProtectedRoute } from "./ProtectedRoute";
+import { MyTicketsPage } from "../pages/tickets/MyTicketsPage";
+import { TicketDetailsPage } from "../pages/tickets/TicketDetailsPage";
+import { MyEventsPage } from "../pages/organizer/MyEventsPage";
+import { CreateEventPage } from "../pages/organizer/CreateEventPage";
+import { OrganizerEventDetailsPage } from "../pages/organizer/OrganizerEventDetailsPage";
+import { EditEventPage } from "../pages/organizer/EditEventPage";
+import { OrganizerEventTicketsPage } from "../pages/organizer/OrganizerEventTicketsPage";
+import { AdminLayout } from "../layouts/AdminLayout";
+import { AdminDashboardPage } from "../pages/admin/AdminDashboardPage";
+import { AdminUsersPage } from "../pages/admin/AdminUsersPage";
+import { CreateUserPage } from "../pages/admin/CreateUserPage";
 
 export const router = createBrowserRouter([
-  {
-    element: <RootLayout />,
-    children: [
-      {
-        index: true,
-        element: <HomePage />,
-      },
-      {
-        path: 'events',
-        element: <EventsPage />,
-      },
-      {
-        path: 'events/:eventId',
-        element: <EventDetailsPage />,
-      },
-      {
-        path: 'about',
-        element: <AboutPage />,
-      },
-      {
-        path: '*',
-        element: <NotFoundPage />,
-      },
-    ],
-  },
-])
+    {
+        element: <RootLayout />,
+        children: [
+            {
+                index: true,
+                element: <HomePage />,
+            },
+            {
+                path: "events",
+                element: <EventsPage />,
+            },
+            {
+                path: "events/:eventId",
+                element: <EventDetailsPage />,
+            },
+            {
+                element: <ProtectedRoute />,
+                children: [
+                    {
+                        path: "my-tickets",
+                        element: <MyTicketsPage />,
+                    },
+                    {
+                        path: "my-tickets/:ticketId",
+                        element: <TicketDetailsPage />,
+                    },
+                ],
+            },
+            {
+                element: <ProtectedRoute allowedRoles={["ORGANIZER"]} />,
+                children: [
+                    {
+                        path: "my-events",
+                        element: <MyEventsPage />,
+                    },
+                    {
+                        path: "my-events/create",
+                        element: <CreateEventPage />,
+                    },
+                    {
+                        path: "my-events/:eventId",
+                        element: <OrganizerEventDetailsPage />,
+                    },
+                    {
+                        path: "my-events/:eventId/edit",
+                        element: <EditEventPage />,
+                    },
+                    {
+                        path: "my-events/:eventId/tickets",
+                        element: <OrganizerEventTicketsPage />,
+                    },
+                ],
+            },
+            {
+                element: <ProtectedRoute allowedRoles={["ADMIN"]} />,
+                children: [
+                    {
+                        path: "admin",
+                        element: <AdminLayout />,
+                        children: [
+                            {
+                                index: true,
+                                element: <AdminDashboardPage />,
+                            },
+                            {
+                                path: "users",
+                                element: <AdminUsersPage />,
+                            },
+                            {
+                                path: "users/create",
+                                element: <CreateUserPage />,
+                            },
+                        ],
+                    },
+                ],
+            },
+            {
+                path: "about",
+                element: <AboutPage />,
+            },
+            {
+                path: "login",
+                element: <LoginPage />,
+            },
+            {
+                path: "register",
+                element: <RegisterPage />,
+            },
+            {
+                path: "*",
+                element: <NotFoundPage />,
+            },
+        ],
+    },
+]);

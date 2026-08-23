@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
+import { TicketPurchase } from '../components/tickets/TicketPurchase'
 import { getEventById } from '../services/api/events'
-import type { ApiError, EventResponseDto } from '../types/api'
+import type { ApiError } from '../types/api'
+import type { EventResponseDto } from '../types/events'
 import { formatEventDate, formatEventPrice } from '../utils/formatters'
 
 export function EventDetailsPage() {
@@ -58,6 +60,7 @@ export function EventDetailsPage() {
         <div><dt>Price</dt><dd>{formatEventPrice(event.price)}</dd></div>
         {event.organizerName && <div><dt>Organizer</dt><dd>{event.organizerName}</dd></div>}
       </dl>
+      <TicketPurchase eventId={event.id} />
     </div>
   </article>
 }
