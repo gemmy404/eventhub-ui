@@ -1,11 +1,12 @@
-# EventHub Frontend
-
-EventHub is a full-stack event management and ticketing platform. This repository contains the **frontend application**, built to provide distinct experiences for three roles: regular users, organizers, and administrators.
 
 <!-- Logo -->
 <p align="center">
   <img src="docs/assets/logo.svg" alt="EventHub Logo" width="160" />
 </p>
+<h1 align="center">EventHub</h1>
+
+EventHub is a full-stack event management and ticketing platform. This repository contains the **frontend application**, built to provide distinct experiences for three roles: regular users, organizers, and administrators.
+
 
 ---
 
