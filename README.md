@@ -218,9 +218,9 @@ Axios interceptors attach the JWT access token to each request and monitor respo
 | :-----------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------: |
 | <img src="/docs/assets/organizer-events.png" alt="Organizer Dashboard" width="400" /> | <img src="/docs/assets/event-tickets.png" alt="Organizer Event Tickets" width="400" /> |
 
-|                                 Admin Dashboard                                  |
-| :------------------------------------------------------------------------------: |
-| <img src="/docs/assets/admin-dashboard.png" alt="Admin Dashboard" width="400" /> |
+|                                 Admin Dashboard                                  |                             Admin Dashboard                              |
+|:--------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------:|
+| <img src="/docs/assets/admin_dashboard.png" alt="Admin Dashboard" width="400" /> | <img src="/docs/assets/admin-dashboard.png" alt="Admin Dashboard" width="400" /> |
 
 ---
 
