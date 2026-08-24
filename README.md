@@ -2,9 +2,9 @@
 
 EventHub is a full-stack event management and ticketing platform. This repository contains the **frontend application**, built to provide distinct experiences for three roles: regular users, organizers, and administrators.
 
-<!-- Main screenshot -->
+<!-- Logo -->
 <p align="center">
-  <img src="docs/assets/logo.svg" alt="EventHub - Browse Events" width="850" />
+  <img src="docs/assets/logo.svg" alt="EventHub Logo" width="160" />
 </p>
 
 ---
@@ -210,35 +210,17 @@ Axios interceptors attach the JWT access token to each request and monitor respo
 
 ## Screenshots
 
-<details>
-<summary>Event Details</summary>
-<br>
-<img src="/docs/assets/event-details.png" alt="Event Details" width="850" />
-</details>
+|                                Event Details                                 |                               My Tickets                               |
+| :--------------------------------------------------------------------------: | :--------------------------------------------------------------------: |
+| <img src="/docs/assets/event-details.png" alt="Event Details" width="400" /> | <img src="/docs/assets/my-tickets.png" alt="My Tickets" width="400" /> |
 
-<details>
-<summary>My Tickets</summary>
-<br>
-<img src="/docs/assets/my-tickets.png" alt="My Tickets" width="850" />
-</details>
+|                                  Organizer Dashboard                                  |                                Organizer Event Tickets                                 |
+| :-----------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------: |
+| <img src="/docs/assets/organizer-events.png" alt="Organizer Dashboard" width="400" /> | <img src="/docs/assets/event-tickets.png" alt="Organizer Event Tickets" width="400" /> |
 
-<details>
-<summary>Organizer Dashboard</summary>
-<br>
-<img src="/docs/assets/organizer-events.png" alt="Organizer Dashboard" width="850" />
-</details>
-
-<details>
-<summary>Organizer Event Tickets</summary>
-<br>
-<img src="/docs//assets/event-tickets.png" alt="Organizer Event Tickets" width="850" />
-</details>
-
-<details>
-<summary>Admin Dashboard</summary>
-<br>
-<img src="/docs/assets/admin-dashboard.png" alt="Admin Dashboard" width="850" />
-</details>
+|                                 Admin Dashboard                                  |
+| :------------------------------------------------------------------------------: |
+| <img src="/docs/assets/admin-dashboard.png" alt="Admin Dashboard" width="400" /> |
 
 ---
 
